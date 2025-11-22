@@ -1,0 +1,8 @@
+<div class="min-h-screen bg-blue-50 p-4 flex items-center justify-center">
+<app-chat-messages
+    class="w-full max-w-4xl"
+    [username]="username"
+    [messages]="webSocketService.messages()"
+    (onSend)="sendMessage($event)"
+  ></app-chat-messages>
+</div>

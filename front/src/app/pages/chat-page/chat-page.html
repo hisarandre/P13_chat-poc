@@ -1,0 +1,16 @@
+<div class="min-h-screen bg-blue-50 p-4 flex items-center justify-center">
+  @if (!isConnected) {
+    <app-chat-login
+      class="w-full max-w-md"
+      (onConnect)="handleConnect($event)"
+    ></app-chat-login>
+  } @else {
+    <app-chat-messages
+      class="w-full max-w-4xl"
+      [username]="username"
+      [messages]="messages"
+      (onSend)="sendMessage($event)"
+      (onDisconnect)="disconnect()"
+    ></app-chat-messages>
+  }
+</div>
