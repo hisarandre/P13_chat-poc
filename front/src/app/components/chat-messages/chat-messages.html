@@ -1,0 +1,65 @@
+<mat-card class="max-w-4xl w-full h-[600px] flex flex-col">
+  <!-- Header -->
+  <mat-card-header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg">
+    <div class="flex justify-between items-center w-full px-4 pt-2 pb-4">
+      <mat-card-title class="text-xl font-bold">
+        Chat avec le support
+      </mat-card-title>
+
+      @if(canDisconnect){
+        <button mat-icon-button (click)="disconnect()" aria-label="Se déconnecter">
+          <mat-icon style="color: white !important;">logout</mat-icon>
+        </button>
+      }
+    </div>
+  </mat-card-header>
+
+  <!-- Messages -->
+  <mat-card-content class="flex-1 overflow-y-auto bg-gray-50 p-4" role="log" aria-live="polite">
+    @for (message of messages; track message.id || message.timestamp) {
+      <div class="m-4">
+        @if (isSystemMessage(message)) {
+          <div class="flex justify-center">
+            <div class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-sm">
+              {{ getMessageText(message) }}
+            </div>
+          </div>
+        } @else {
+          <div [ngClass]="getMessageClasses(message)">
+            <div [ngClass]="getMessageBubbleClasses(message)">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-semibold text-sm" [ngClass]="getSenderNameClasses(message)">
+                  {{ message.sender }}
+                </span>
+                <span class="text-xs opacity-75 ml-2">{{ formatTime(message.timestamp) }}</span>
+              </div>
+              <p class="text-sm break-words">{{ message.content }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </mat-card-content>
+
+  <!-- Input -->
+  <div class="p-4 flex gap-2">
+    <input
+      type="text"
+      [(ngModel)]="messageContent"
+      (keyup.enter)="sendMessage()"
+      placeholder="Tapez votre message..."
+      aria-label="Message à envoyer"
+      class="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 outline-none text-gray-900 placeholder-gray-400 transition-all duration-200"
+    />
+
+    <button
+      (click)="sendMessage()"
+      [disabled]="!canSendMessage"
+      aria-label="Envoyer le message"
+      class="px-4 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all duration-200"
+    >
+      Envoyer
+    </button>
+  </div>
+
+</mat-card>
