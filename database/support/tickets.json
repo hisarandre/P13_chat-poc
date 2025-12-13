@@ -1,0 +1,25 @@
+[
+  {
+    "_id": "RANDOM_UUID",
+    "user_id": "UUID-USER",
+    "subject": "Example ticket",
+    "message": "I have a problem with my rental",
+    "category": "RENTAL", 
+    "created_at": { "$date": "2025-12-10T10:10:00Z" },
+
+    "messages": [
+      {
+        "id": "UUID1",
+        "user_id": "UUID-USER-1",
+        "message": "It seems like there was a problem with your payment",
+        "timestamp": { "$date": "2025-12-10T14:00:00Z" }
+      },
+      {
+        "id": "UUID2",
+        "user_id": "UUID-USER-2",
+        "message": "What can i do?",
+        "timestamp": { "$date": "2025-13-10T11:05:00Z" }
+      }
+    ]
+  }
+]

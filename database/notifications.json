@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "UUID-NOTIF",
+    "user_id": "UUID-USER",
+    "type": "RENTAL_CONFIRMATION",
+    "subject": "Your rental has been confirmed",
+    "content": "Your booking is confirmed. Pickup is scheduled for Feb 14.",
+    "status": "SENT",
+    "created_at": { "$date": "2025-02-10T09:30:00Z" }
+  }
+]
