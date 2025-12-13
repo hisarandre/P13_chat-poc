@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "UUID-CHAT-SESSION",
+    "client_id": "UUID-CLIENT",
+    "agent_id": "UUID-AGENT",
+    "started_at": { "$date": "2025-12-10T12:00:00Z" },
+    "ended_at": null,
+    "status": "ACTIVE",
+
+    "messages": [
+      {
+        "id": "UUID-msg-1",
+        "sender_id": "UUID-CLIENT",
+        "receiver_id": "UUID-AGENT",
+        "type": "CHAT",
+        "content": "Hello, I need help",
+        "timestamp": { "$date": "2025-12-10T12:01:00Z" }
+      },
+      {
+        "id": "UUID-msg-2",
+        "sender_id": "UUID-AGENT",
+        "receiver_id": "UUID-CLIENT",
+        "type": "CHAT",
+        "content": "Of course! How can i help you?",
+        "timestamp": { "$date": "2025-12-10T12:01:30Z" }
+      }
+    ]
+  }
+]
