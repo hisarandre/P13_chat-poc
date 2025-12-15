@@ -19,15 +19,14 @@ CREATE TABLE user (
     prefered_language VARCHAR(10) DEFAULT 'en',
     prefered_currency VARCHAR(10) DEFAULT 'USD',
     is_active BOOLEAN DEFAULT FALSE,
-    role ENUM('CLIENT', 'AGENT', 'ADMIN') DEFAULT 'CLIENT',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NULL
 );
 
-CREATE TABLE agent (
+CREATE TABLE employee (
     user_id BINARY(16) PRIMARY KEY,
-    is_online BOOLEAN DEFAULT FALSE,
+    role ENUM('AGENT', 'ADMIN'),
     current_chats INT DEFAULT 0,
     max_current_chats INT DEFAULT 5,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
